@@ -1,0 +1,58 @@
+<form [formGroup]="saveStudentForm" (ngSubmit)="onSubmit()" class="border border-light p-5">
+    <div class="form-group">
+        <label for="firstname">FIRSTNAME</label>
+        <input type="text" formControlName="firstname" class="form-control" id="firstname" required name="firstname"
+            [ngClass]="{ 'is-invalid': saveStudentFromCtrl.firstname.touched && saveStudentFromCtrl.firstname.errors }">
+        <div *ngIf="saveStudentFromCtrl.firstname.invalid && (saveStudentFromCtrl.firstname.dirty || saveStudentFromCtrl.firstname.touched)"
+            class="invalid-feedback">
+            <div *ngIf="saveStudentFromCtrl.firstname.errors.required">El primer nombre es requerida</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastname">SEGUNDO NOMBRE</label>
+        <input id="lastname" formControlName="lastname" class="form-control" name="lastname"
+            [ngClass]="{ 'is-invalid': saveStudentFromCtrl.lastname.touched && saveStudentFromCtrl.lastname.errors }">
+        <div *ngIf="saveStudentFromCtrl.lastname.invalid && (saveStudentFromCtrl.lastname.dirty || saveStudentFromCtrl.lastname.touched)"
+            class="invalid-feedback">
+            <div *ngIf="saveStudentFromCtrl.lastname.errors.required">El lastname es requerida
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">EMAIL</label>
+        <input id="email" formControlName="email" class="form-control" name="email"
+            [ngClass]="{ 'is-invalid': saveStudentFromCtrl.email.touched && saveStudentFromCtrl.email.errors }">
+        <div *ngIf="saveStudentFromCtrl.email.invalid && (saveStudentFromCtrl.email.dirty || saveStudentFromCtrl.email.touched)"
+            class="invalid-feedback">
+            <div *ngIf="saveStudentFromCtrl.email.errors.required">El email es requerida</div>
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-success float-right"
+        [disabled]="saveStudentForm.invalid">Enviar</button>
+</form>
+<div class="lista-libros">
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PRIMER NOMBRE</th>
+                            <th>SEGUNDO NOMBRE</th>
+                            <th>EMAIL</th>
+                            <th>OPCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let student of students" >
+                            <td>{{student.id}}</td>
+                            <td>{{student.firstname}}</td>
+                            <td>{{student.lastname}}</td>
+                            <td>{{student.email}}</td>
+                            <td>{{student.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+</div>
